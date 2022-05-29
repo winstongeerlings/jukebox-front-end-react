@@ -6,7 +6,9 @@ import {getAlbumsByArtistName} from '../services/album.service';
 const initialState: AlbumState = {
   albumList: [],
   status: 'idle',
-  error: undefined
+  error: undefined,
+  orberDy: 'API',
+  sortBy: 'ASC',
 };
 
 export const albumSlice = createSlice({
@@ -14,13 +16,27 @@ export const albumSlice = createSlice({
   initialState,
   reducers: {
     sortByName: (state: AlbumState) => {
-      // TODO: implement sorting by album name
-      state.albumList = [];
+      const _orberBy = 'name';
+      const _resetSort = state.orberDy !== _orberBy;
+      if(_resetSort) {
+        state.sortBy = 'ASC';
+      } else {
+        state.sortBy = state.sortBy === 'ASC' ? 'DESC' : 'ASC';
+      }
+
+      state.albumList = state.albumList.sort((a, b) => {
+        if(!_resetSort) {
+          if(state.sortBy === 'ASC') {
+            return a.name > b.name ? 1 : -1;
+          } else {
+            return a.name > b.name ? -1 : 1;
+          }
+        } else {
+          return a.name > b.name ? 1 : -1;
+        }
+      });
+      state.orberDy = _orberBy;
     },
-    sortByAlbumYear: (state: AlbumState) => {
-      // TODO: implement sorting by album year
-      state.albumList = [];
-    }
   },
   extraReducers(builder) {
     builder
@@ -44,7 +60,9 @@ export const fetchAlbums = createAsyncThunk('albums/fetchAlbums', async () => {
 
 export const selectAllAlbums = (state: {album: AlbumState}) => state.album.albumList;
 export const getAlbumsStatus = (state: {album: AlbumState}) => state.album.status;
+export const getAlbumsSortBy = (state: {album: AlbumState}) => state.album.sortBy;
+export const getAlbumsOrderBy = (state: {album: AlbumState}) => state.album.orberDy;
 export const getAlbumsError = (state: {album: AlbumState}) => state.album.error;
 
-export const {sortByName, sortByAlbumYear} = albumSlice.actions;
+export const {sortByName} = albumSlice.actions;
 export default albumSlice.reducer;
