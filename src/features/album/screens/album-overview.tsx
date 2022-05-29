@@ -53,7 +53,7 @@ function AlbumOverviewScreen() {
                 <StyledFlex justifyContent={"space-between"} alignItems={"center"}>
                     <StyledTitle>Albums:</StyledTitle>
                     <div>
-                        <StyledSubTitle>sorting: </StyledSubTitle>
+                        <StyledSubTitle>sorting:</StyledSubTitle>
                         <StyledSortingButton isActive={stateOrderBy === 'name'} sortBy={stateSortBy} onClick={() => {dispatch(sortByName())}}>Album name <img width={12} src={'/icons/sort_arrow.svg'}/></StyledSortingButton>
                     </div>
                 </StyledFlex>
