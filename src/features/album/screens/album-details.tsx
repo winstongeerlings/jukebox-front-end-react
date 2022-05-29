@@ -1,11 +1,11 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {StyledArtistCover} from '../components/styled';
 import {useSelector} from 'react-redux';
 import {selectAllAlbumInfos} from '../redux/album-info-slice';
 import {AlbumInfo, AlbumInfoTrack} from '../models';
 import {
-    StyledContainer,
+    StyledContainer, StyledFlex,
     StyledGrid,
     StyledTitle,
 } from '../../../components/styled';
@@ -55,6 +55,11 @@ function AlbumDetailsScreen() {
                 <StyledGrid columns={1}>
                     {createTrackList()}
                 </StyledGrid>
+                <StyledFlex justifyContent={'center'}>
+                    <Link to={'/'}>
+                        Back to overview
+                    </Link>
+                </StyledFlex>
             </StyledContainer>
         </>
     );
