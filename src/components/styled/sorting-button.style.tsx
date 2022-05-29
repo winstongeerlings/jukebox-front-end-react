@@ -6,6 +6,7 @@ interface Props {
 }
 
 export const StyledSortingButton = styled.button`
+  cursor: pointer;
   background-color: transparent;
   border: none;
   display: flex;
