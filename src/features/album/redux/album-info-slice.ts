@@ -1,7 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {getAlbumInfoByName} from '../services/album.service';
-import {AlbumInfoState} from '../models/album-info-state.model';
-import {AlbumInfo} from '../models/album-info.model';
+import {AlbumInfo, AlbumInfoState} from '../models';
 
 const initialState: AlbumInfoState = {
   albumInfoList: [],
@@ -10,10 +9,13 @@ const initialState: AlbumInfoState = {
 };
 
 const addAlbumInfoToList = (albumInfoList: AlbumInfo[], newAlbumInfo: AlbumInfo) => {
-  const _albumInfo = albumInfoList.find((albumInfo) => albumInfo.name === newAlbumInfo.name);
 
-  if(!_albumInfo){
-    albumInfoList = albumInfoList.concat(newAlbumInfo);
+  if (newAlbumInfo) {
+    const _albumInfo = albumInfoList.find((albumInfo) => albumInfo.name === newAlbumInfo.name);
+
+    if(!_albumInfo){
+      albumInfoList = albumInfoList.concat(newAlbumInfo);
+    }
   }
 
   return albumInfoList;
@@ -23,14 +25,9 @@ export const albumInfoSlice = createSlice({
   name: 'albumInfo',
   initialState,
   reducers: {
-    sortByName: (state: AlbumInfoState) => {
-      // TODO: Action to sort albumlist by name
+    placeHolderReducer: (state: AlbumInfoState) => {
       state.albumInfoList = [];
     },
-    sortByAlbumYear: (state: AlbumInfoState) => {
-      // TODO: Action to sort albumlist by name
-      state.albumInfoList = [];
-    }
   },
   extraReducers(builder) {
     builder
@@ -56,5 +53,5 @@ export const selectAllAlbumInfos = (state: {albumInfo: AlbumInfoState}) => state
 export const getAlbumInfosStatus = (state: {albumInfo: AlbumInfoState}) => state.albumInfo.status;
 export const getAlbumInfosError = (state: {albumInfo: AlbumInfoState}) => state.albumInfo.error;
 
-export const {sortByName, sortByAlbumYear} = albumInfoSlice.actions;
+export const {placeHolderReducer} = albumInfoSlice.actions;
 export default albumInfoSlice.reducer;

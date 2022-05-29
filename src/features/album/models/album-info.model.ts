@@ -1,3 +1,5 @@
+import {AlbumInfoTrack} from './album-info-track.model';
+
 export interface AlbumInfo {
     name: string;
     listeners: string;
@@ -6,23 +8,7 @@ export interface AlbumInfo {
     mbid: string;
     url: string;
     tracks: {
-        track: {
-            streamable: {
-                fulltrack: string,
-                "#text": string
-            },
-            duration: number,
-            url: string,
-            name: string,
-            "@attr": {
-                rank: number
-            },
-            artist: {
-                url:string,
-                name: string,
-                mbid: string
-            }
-        }[];
+        track: AlbumInfoTrack | AlbumInfoTrack[] ;
     };
     image: {
        "#text": string,

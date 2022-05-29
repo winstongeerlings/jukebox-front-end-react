@@ -15,7 +15,8 @@ function AlbumGridItem(props: {name: string, artist: string, imageUrl: string | 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (isInit) {
+        const albumInfo = albumInfoList.find(albumInfo => albumInfo.name === name);
+        if (isInit && !albumInfo) {
             //* When there is time figure how to solve typing issue *//
             // @ts-ignore
             dispatch(fetchAlbumInfo({albumName: name, artistName: artist}));
