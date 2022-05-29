@@ -1,6 +1,13 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {StyledGrid, StyledTitle, StyledContainer, StyledFlex, StyledSortingButton} from '../../../components/styled';
+import {
+    StyledGrid,
+    StyledTitle,
+    StyledContainer,
+    StyledFlex,
+    StyledSortingButton,
+    StyledSubTitle,
+} from '../../../components/styled';
 import Loading from '../../../components/loading';
 import {
     selectAllAlbums,
@@ -46,6 +53,7 @@ function AlbumOverviewScreen() {
                 <StyledFlex justifyContent={"space-between"} alignItems={"center"}>
                     <StyledTitle>Albums:</StyledTitle>
                     <div>
+                        <StyledSubTitle>sorting: </StyledSubTitle>
                         <StyledSortingButton isActive={stateOrderBy === 'name'} sortBy={stateSortBy} onClick={() => {dispatch(sortByName())}}>Album name <img width={12} src={'/icons/sort_arrow.svg'}/></StyledSortingButton>
                     </div>
                 </StyledFlex>
