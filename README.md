@@ -4,8 +4,10 @@ This project is a radio FM app of one of my favorite artists. Goal of this proje
 
 ## Getting Started
 
-To start with the project copy the `.env.example` file to `.env` and update the env variables.
+1. To start with the project copy the `.env.example` file to `.env` and update the env variables.
 
-Run `yarn start` to start a local instance of the development server
+2. Run `yarn` to install all the required dependencies
 
-When successfully compiled the app will be available on `http://localhost:3000`
+3. Run `yarn start` to start a local instance of the development server
+
+4. When successfully compiled the app will be available on `http://localhost:3000`
