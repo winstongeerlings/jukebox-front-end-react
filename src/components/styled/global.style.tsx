@@ -18,6 +18,11 @@ const GlobalStyle = createGlobalStyle<_DefaultTheme>`
     font-size: 1.15em;
     margin: 0;
   }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
 `;
 

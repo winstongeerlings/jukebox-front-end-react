@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {StyledTitle, StyledSubTitle} from '../../../components/styled';
 import {StyledAlbumCover} from './styled';
 import {fetchAlbumInfo, getAlbumInfosStatus, selectAllAlbumInfos} from '../redux/album-info-slice';
@@ -34,11 +35,11 @@ function AlbumGridItem(props: {name: string, artist: string, imageUrl: string | 
     }
 
     return (
-        <section>
+        <Link to={`/album/${name}`}>
             <StyledAlbumCover img={imageUrl} width={"100%"}/>
             <StyledTitle>{name}</StyledTitle>
             <StyledSubTitle>{extractYearFromAlbumInfoList(name)}</StyledSubTitle>
-        </section>
+        </Link>
     );
 }
 
