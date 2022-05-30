@@ -22,7 +22,7 @@ function AlbumGridItem(props: {name: string, artist: string, imageUrl: string | 
             dispatch(fetchAlbumInfo({albumName: name, artistName: artist}));
             setIsInit(false);
         }
-    }, [stateStatus, dispatch]);
+    }, [stateStatus, dispatch, albumInfoList, artist, isInit, name]);
 
 
     const extractYearFromAlbumInfoList = (albumName: string) => {
