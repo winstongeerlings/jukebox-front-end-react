@@ -16,7 +16,7 @@ function AlbumDetailsScreen() {
     const albumInfoList = useSelector(selectAllAlbumInfos);
     const requestedAlbumInfo = albumInfoList.find(albumInfo => albumInfo.name === albumName);
 
-    if(!requestedAlbumInfo) {
+    if(!albumName || !requestedAlbumInfo) {
         return (
             <>
                 <p>Oh Oh! we could not find the requested album: <b>{albumName}</b></p>
@@ -38,11 +38,11 @@ function AlbumDetailsScreen() {
 
         if(Array.isArray(track)) {
             return track.map((track: AlbumInfoTrack) => {
-                return <TrackGridItem key={track.name} name={track.name} duration={track.duration} />
+                return <TrackGridItem key={track.name} name={track.name} duration={track.duration} albumName={albumName} />
             });
         }
 
-        return <TrackGridItem name={track.name} duration={track.duration} />
+        return <TrackGridItem name={track.name} duration={track.duration} albumName={albumName} />
     }
 
     return (
